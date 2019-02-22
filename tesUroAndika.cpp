@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <queue>
+#include <array>
  
 using namespace std;
  
@@ -10,7 +11,7 @@ using namespace std;
  * Auto-generated code below aims at helping you parse
  * the standard input according to the problem statement.
  **/
-//   People who contributed to this code
+// People who contributed to this code
 // Oktavianus Irvan Sitanggang 16518171
 // Andhika Rahadian            16518123 
 // Tiara Putri Mustikawati     16918261
@@ -64,20 +65,20 @@ int main()
         for (int i = 0; i < zoneCount; ++i) {
             if (((myId == 0 && podsP0[i] != 0) || (myId == 1 && podsP1[i] != 0))) {
                 int indMin = adjacentZone[i][0];
-                for (int j = 0; j < adjacentZone[i].size(); j++) 
+                for (int j = 0; j < adjacentZone[i].size(); j++) {
                     if (ownerId[adjacentZone[i][j]] != myId)
-                        visited[adjacentZone[i][j]] = ownerId[adjacentZone[i][j]] == -1 ? 0 : -1;
-                 if (visited[adjacentZone[i][j]] < visited[adjacentZone[i][indMin]])
-                  indMin = j; // search the most not visited hexa
-              // i dont know why there is segmentation fault error in line 65 because we think there is no overlapping memory
+                        visited[adjacentZone[i][j]] = ((ownerId[adjacentZone[i][j]] == -1) ? 0 : -1);
+                 if (visited[adjacentZone[i][j]] < visited[adjacentZone[i][indMin]] && (myId==0 &&(sizeof(podsP0)/sizeof(*podsP0)) >= (sizeof(podsP1)/sizeof(*podsP1))||(myId==1 && (sizeof(podsP0)/sizeof(*podsP0)) <= (sizeof(podsP1)/sizeof(*podsP1)) )))
+                  indMin = j;
                 }
-          visited[adjacentZone[i][indMin]]++; // we visit the hexa then add 1 to visited
-          if (!visited[adjacentZone[i][indMin]])
+          (visited[adjacentZone[i][indMin]])++;
+         if (!visited[adjacentZone[i][indMin]])
            visited[adjacentZone[i][indMin]]++;
                 if (myId == 0) cout << podsP0[i]; else cout << podsP1[i];
                 cout << ' ' << i << ' ' << adjacentZone[i][indMin] << ' ';
             }
         }
+        cerr << "Debug messages..." << endl;
         cout << endl;
         cout << "WAIT" << endl;
     }
