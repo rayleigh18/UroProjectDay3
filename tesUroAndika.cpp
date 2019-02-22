@@ -10,6 +10,11 @@ using namespace std;
  * Auto-generated code below aims at helping you parse
  * the standard input according to the problem statement.
  **/
+//   People who contributed to this code
+// Oktavianus Irvan Sitanggang 16518171
+// Andhika Rahadian            16518123 
+// Tiara Putri Mustikawati     16918261
+// Moh. Arif Izzuddin          13617035
 int main()
 {
     int playerCount; // the amount of players (always 2)
@@ -64,8 +69,7 @@ int main()
                         visited[adjacentZone[i][j]] = ownerId[adjacentZone[i][j]] == -1 ? 0 : -1;
                  if (visited[adjacentZone[i][j]] < visited[adjacentZone[i][indMin]])
                   indMin = j; // search the most not visited hexa
-              
-             
+              // i dont know why there is segmentation fault error in line 65 because we think there is no overlapping memory
                 }
           visited[adjacentZone[i][indMin]]++; // we visit the hexa then add 1 to visited
           if (!visited[adjacentZone[i][indMin]])
