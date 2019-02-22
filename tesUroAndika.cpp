@@ -16,70 +16,42 @@ using namespace std;
 // Andhika Rahadian            16518123 
 // Tiara Putri Mustikawati     16918261
 // Moh. Arif Izzuddin          13617035
-int main()
-{
-    int playerCount; // the amount of players (always 2)
-    int myId; // my player ID (0 or 1)
-    int zoneCount; // the amount of zones on the map
-    int linkCount; // the amount of links between all zones
-    cin >> playerCount >> myId >> zoneCount >> linkCount;
-    int platinumSource[zoneCount];
+int main() {
+ int playerCount,myId,zoneCount, edges;
+    cin >> playerCount >> myId >> zoneCount >> edges;
+    vector<int> vecZone[zoneCount];
+    int platinumSourceCount[zoneCount];
     for (int i = 0; i < zoneCount; i++) {
-        int zoneId; // this zone's ID (between 0 and zoneCount-1)
-        cin >> zoneId;
-        cin >> platinumSource[zoneId];
+     int a;
+     cin >> a >> platinumSourceCount[a];
     }
- 
-    vector <int> adjacentZone[zoneCount];
-    for (int i = 0; i < linkCount; i++) {
-        int zone1;
-        int zone2;
-        cin >> zone1 >> zone2;
-        adjacentZone[zone1].push_back(zone2);
-        adjacentZone[zone2].push_back(zone1);
+    while (edges--) {
+        int a, b;
+        cin >> a >> b;
+        vecZone[a].push_back(b);
+        vecZone[b].push_back(a);
     }
- 
-    int ownerId[zoneCount];
-    int podsP0[zoneCount];
-    int podsP1[zoneCount];
-    bool visible[zoneCount];
-    int myPlatinum;
-    int prio[zoneCount];
-    int visited[zoneCount];
-    for (int i = 0; i < zoneCount; i++) visited[i] = 0;
-    // game loop
-    while (1) {
-        cin >> myPlatinum; 
-        //queue <int> prioQueue;
+    int ownerIds[zoneCount],podsP0[zoneCount],podsP1[zoneCount],visible[zoneCount],platinumSource[zoneCount],visited[zoneCount];
+    while (true) {
+        int myPlatinum;
+        cin >> myPlatinum;
         for (int i = 0; i < zoneCount; i++) {
-            int zId; // this zone's ID
-            cin >> zId;
-            cin >> ownerId[zId] >> podsP0[zId] >> podsP1[zId] >> visible[zId] >> platinumSource[zId];
-            cin.ignore();
+            int zId;
+            cin >> zId >> ownerIds[zId]>> podsP0[zId]>> podsP1[zId]>> visible[zId]>> platinumSource[zId];
         }
- 
-        // Write an action using cout. DON'T FORGET THE "<< endl"
-        // To debug: cerr << "Debug messages..." << endl;
- 
-        // first line for movement commands, second line no longer used (see the protocol in the statement for details)
-        for (int i = 0; i < zoneCount; ++i) {
-            if (((myId == 0 && podsP0[i] != 0) || (myId == 1 && podsP1[i] != 0))) {
-                int indMin = adjacentZone[i][0];
-                for (int j = 0; j < adjacentZone[i].size(); j++) {
-                    if (ownerId[adjacentZone[i][j]] != myId)
-                        visited[adjacentZone[i][j]] = ((ownerId[adjacentZone[i][j]] == -1) ? 0 : -1);
-                 if (visited[adjacentZone[i][j]] < visited[adjacentZone[i][indMin]] && (myId==0 &&(sizeof(podsP0)/sizeof(*podsP0)) >= (sizeof(podsP1)/sizeof(*podsP1))||(myId==1 && (sizeof(podsP0)/sizeof(*podsP0)) <= (sizeof(podsP1)/sizeof(*podsP1)) )))
-                  indMin = j;
+        for (int i = 0; i < zoneCount; i++) {
+            if ((myId == 0 && podsP0[i] > 0) || myId == 1 && podsP1[i] > 0) {
+                int next = -1;
+                for (int nextId : vecZone[i]) {
+                    if (ownerIds[nextId] != myId)
+                        visited[nextId] = ownerIds[nextId] == -1 ? 0 : -1;
+                    if (next == -1 || visited[nextId] < visited[next] || (visited[nextId] == 0 && platinumSource[nextId] > platinumSource[next]))
+                        next = nextId;
                 }
-          (visited[adjacentZone[i][indMin]])++;
-         if (!visited[adjacentZone[i][indMin]])
-           visited[adjacentZone[i][indMin]]++;
-                if (myId == 0) cout << podsP0[i]; else cout << podsP1[i];
-                cout << ' ' << i << ' ' << adjacentZone[i][indMin] << ' ';
+                visited[next] += 1 + (visited[next] == -1 ? 1 : 0);
+                cout << (myId == 0 ? podsP0[i] : podsP1[i]) << " " << i << " " << next << " ";
             }
         }
-        cerr << "Debug messages..." << endl;
-        cout << endl;
-        cout << "WAIT" << endl;
+        cout << endl << "WAIT" << endl;
     }
 }
