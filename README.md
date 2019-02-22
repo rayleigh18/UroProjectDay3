@@ -14,7 +14,7 @@ Main bola seperti perempuan. POD kita akan bergerombol untuk menyerang satu POD 
 POD lawan hancur, mencari POD yang lain untuk dihancurkan <br />
 Kita simpulkan strategi ini dapat mennghancurkan POD lawan, menginvasi daerah (hexa) lawan dan mengeruk platinum sekaligus <br />
 
-satu perlima dari POD kita berada di HQ (Headquarters) untuk melindungi markas dari ancaman POD musuh.
+satu perlima dari POD kita berada di HQ (Headquarters) untuk melindungi markas dari ancaman POD musuh. <br />
 
 Notes : Nama file tesUroAndika dibuat secara iseng oleh Irvan sang ketua karena kita semua sakit kepala <br />
 Notes2 : Kode yang ada memakai strategi yang ke 1, karena strategi 2 belom kepikiran. pusing deh <br />
