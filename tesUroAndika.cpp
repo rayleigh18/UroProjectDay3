@@ -3,7 +3,6 @@
 #include <vector>
 #include <algorithm>
 #include <queue>
-#include <array>
  
 using namespace std;
  
@@ -11,11 +10,6 @@ using namespace std;
  * Auto-generated code below aims at helping you parse
  * the standard input according to the problem statement.
  **/
-// People who contributed to this code
-// Oktavianus Irvan Sitanggang 16518171
-// Andhika Rahadian            16518123 
-// Tiara Putri Mustikawati     16918261
-// Moh. Arif Izzuddin          13617035
 int main() {
  int playerCount,myId,zoneCount, edges;
     cin >> playerCount >> myId >> zoneCount >> edges;
@@ -31,13 +25,30 @@ int main() {
         vecZone[a].push_back(b);
         vecZone[b].push_back(a);
     }
-    int ownerIds[zoneCount],podsP0[zoneCount],podsP1[zoneCount],visible[zoneCount],platinumSource[zoneCount],visited[zoneCount];
+    int ownerIds[zoneCount],podsP0[zoneCount],podsP1[zoneCount],visible[zoneCount],platinumSource[zoneCount],visited[zoneCount], totalPods ;
     while (true) {
-        int myPlatinum;
+        int myPlatinum, nTry, hqPos;
+        nTry=0;
         cin >> myPlatinum;
         for (int i = 0; i < zoneCount; i++) {
             int zId;
             cin >> zId >> ownerIds[zId]>> podsP0[zId]>> podsP1[zId]>> visible[zId]>> platinumSource[zId];
+        }
+        if (ntry==0){
+            for (int i = 0; i < zoneCount; i++) {
+                if ((myId == 0 && podsP0[i] > 0) || myId == 1 && podsP1[i] > 0)
+                    hqPos=i;
+            }    
+        }
+        totalPods=0;
+        for (int i = 0; i < zoneCount; i++) {
+            if ((myId == 0 && podsP0[i] > 0) || myId == 1 && podsP1[i] > 0)
+                totalPods++
+        }
+        for (int i = 0; i < (totalPods/6) -1; i++){
+            // found the nearest pods to the hq and pods will protect the hq
+            // to find pods nearest to hq using dp and link
+            // and i under will be totalPods/6
         }
         for (int i = 0; i < zoneCount; i++) {
             if ((myId == 0 && podsP0[i] > 0) || myId == 1 && podsP1[i] > 0) {
@@ -54,4 +65,5 @@ int main() {
         }
         cout << endl << "WAIT" << endl;
     }
+    nTry++
 }
