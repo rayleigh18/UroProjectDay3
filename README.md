@@ -12,7 +12,7 @@ agar POD kami tidak bergerak di situ situ saja, melainkan mengeksplor daerah yan
 # Strategi 2:
 Main bola seperti perempuan. POD kita akan bergerombol untuk menyerang satu POD lawan <br />
 POD lawan hancur, mencari POD yang lain untuk dihancurkan <br />
-Kita dapatkan strategi ini dapat mennghancurkan POD lawan, menginvasi daerah (hexa) lawan dan mengeruk platinum sekaligus <br />
+Kita simpulkan strategi ini dapat mennghancurkan POD lawan, menginvasi daerah (hexa) lawan dan mengeruk platinum sekaligus <br />
 
 
 
