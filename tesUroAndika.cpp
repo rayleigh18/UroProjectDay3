@@ -64,9 +64,8 @@ int main()
                         visited[adjacentZone[i][j]] = ownerId[adjacentZone[i][j]] == -1 ? 0 : -1;
                  if (visited[adjacentZone[i][j]] < visited[adjacentZone[i][indMin]])
                   indMin = j; // search the most not visited hexa
-                catch (...) {
-                    break
-                }
+              
+             
                 }
           visited[adjacentZone[i][indMin]]++; // we visit the hexa then add 1 to visited
           if (!visited[adjacentZone[i][indMin]])
